@@ -73,8 +73,8 @@ def get_info(keyword="", type="", url="", contenturl="", img_url=""):
                 else:
                     try:
                         image = table.find("td", {"class" : "infobox-image"})
-                        t = image.findChildren()
-                        img_url = t[1].get("src")
+                        t = image.findChildren("img")
+                        img_url = t[0].get("src")
                         cleaned_data["img_url"] = img_url
                     except:
                         try:
@@ -103,6 +103,8 @@ def get_info(keyword="", type="", url="", contenturl="", img_url=""):
                 try:
                     content = wikipedia.page(content_url).content.split("==")[0]
                     cleaned_data["content_url"] = content_url
+                    if category not in content:
+                        raise Exception("Wrong Page")
                 except:
                     CONTENT_URL = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=10&exlimit=1&explaintext=1&formatversion=2&format=json&titles="+content_url
                     response = requests.get(CONTENT_URL)
@@ -127,7 +129,7 @@ def get_info(keyword="", type="", url="", contenturl="", img_url=""):
                             table_data[key] = value
                 cleaned_data["table_data"] = table_data
 
-                
+
                 # images_url = []
                 # try:
                 #     # images = soup.find_all("img", {"class": "thumbimage"})
@@ -136,7 +138,7 @@ def get_info(keyword="", type="", url="", contenturl="", img_url=""):
                 #     # for i in range(len(images)):
                 #     #     images_url.append({"url":images[i]["src"], "caption": captopns[i].text})
                 #     block = soup.find_all("div", {"class": "thumbinner"})
-    
+
                 #     for blk in block:
                 #         images = blk.find_all("img")
                 #         captions = blk.find_all("div", {"class": "thumbcaption"})

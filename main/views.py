@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .get_data import get_info
+from .get_data import get_info, get_Models
 from .models import Body, Model_3D
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -14,11 +14,6 @@ import json
 
 # Create your views here.
 def index_view(request):
-    # models = list(Model_3D.objects.all())
-    # model_list = []
-    # for model in models:
-    #     model_list.append({"Name": model.name, "model_url": model.model_url, "Captions": model.caption})
-    # print(model_list)
     return render(request, "index.html")
 
 
@@ -164,14 +159,14 @@ def contact_view(request):
 #         with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
 #             smtp.login(email_sender, email_password)
 #             smtp.sendmail(email_sender, email_receiver, em.as_string())
-        
+
 #         return redirect("index_view")
 #     return render(request, "contact.html")
 
 
-# def add_model(request):
-#     models = get_Models()
-#     for model in models:
-#         x = Model_3D.objects.create(name=model[0], model_url=model[1], caption=model[2])
-#         x.save()
-#     return render(request, "index.html")
+def add_model(request):
+    models = get_Models()
+    for model in models:
+        x = Model_3D.objects.create(name=model[0], model_url=model[1], caption=model[2])
+        x.save()
+    return render(request, "index.html")
