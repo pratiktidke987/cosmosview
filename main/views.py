@@ -125,7 +125,7 @@ def contact_view(request):
         name = request.POST["name"]
         email = request.POST["email"]
         message = request.POST["message"]
-        email_to = "riteshthawkar2003@gmail.com"
+        email_to = "pratiktidke987@gmail.com"
 
         subject = 'Hi, you have a new Email'
         message = f'Name: {name} \n Email: {email} \n Messsage: {message}'

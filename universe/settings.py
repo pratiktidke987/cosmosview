@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q1vmar$!-=1fy+$i8#jzi4_=3*vogx3mp%o^(lj6uzm)%fc3c+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,8 +78,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "cosmosview879@gmail.com"
-EMAIL_HOST_PASSWORD = "wwwtsimkokdefcyn"
+EMAIL_HOST_USER = "pratiktidke987@gmail.com"
+EMAIL_HOST_PASSWORD = "aszkxhutgoxwijad"
+
 
 
 # Database
@@ -141,11 +142,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-# STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static/"),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
@@ -165,5 +167,5 @@ LOGOUT_REDIRECT_URL = "login/"
 
 
 # Configure Django App for Heroku.
-import django_heroku
-django_heroku.settings(locals())
+#import django_heroku
+#django_heroku.settings(locals())
