@@ -1,1 +1,1 @@
-web: gunicorn cosmosview.wsgi
+web: gunicorn universe.wsgi
